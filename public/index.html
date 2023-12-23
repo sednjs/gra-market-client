@@ -1,43 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title> kelly's market</title>
+    <link href="index.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="header">
+      <div id="header-area">
+        <img src="images/icons/logo.png">
+      </div>
+    </div>
+    <div id="body">
+      <div id="banner">
+        <img src="images/banners/banner1.png">
+      </div>
+      <h1>items</h1>
+      <div id="product-list">
+      </div>
+    </div>  
+    <div id="footer"></div>
   </body>
+  <script>
+    var products=[{
+      name:'basketball',
+      price:100,
+      seller:'Jordon',
+      imageUrl:'images/products/basketball1.jpeg'
+    },{
+      name:'soccerball',
+      price:50,
+      seller:'Messi',
+      imageUrl:'images/products/soccerball1.jpg'
+    },{
+      name:'keyboard',
+      price:100,
+      seller:'Kelly',
+      imageUrl:'images/products/keyboard1.jpg'
+    }];
+
+    let productsHtml='';
+    for (var i=0;i<products.length;i++){
+      let product=products[i]
+      productsHtml+=
+        '<div class="product-card">'+
+          '<div>'+
+          '  <img class="product-img" src="'+ product.imageUrl + '" />'+
+          '</div>'+
+          '<div class="product-contents">'+
+          '  <span class="product-name">'+ product.name +'</span> <!-- span tag is used to refer to font styles etc.  -->'+
+          '  <span class="product-price">'+ '$'+product.price +'</span>'+
+          '  <div>'+
+          '    <img class="product-avatar" src="images/icons/avatar.png">'+
+          '    <span>' + product.seller +'</span>'+
+          '  </div>'+
+          '</div>'  +      
+        '</div>';
+    }
+
+    document.querySelector("#product-list").innerHTML=productsHtml// html, css <-js
+  </script>
 </html>
